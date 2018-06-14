@@ -1,4 +1,5 @@
 from numpy import *
+import matplotlib.pyplot as plt
 
 def loadDataSet(fileName):
 	dataMat= []
@@ -25,7 +26,10 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
     m = shape(dataSet)[0]
     clusterAssment = mat(zeros((m,2)))#create mat to assign data points 
                                       #to a centroid, also holds SE of each point
-    centroids = createCent(dataSet, k)
+    centroids = array([[20,60],[80,80]])
+	# M1 = [20,60]
+	# M2 = [80,80]
+    # print centroids
     clusterChanged = True
     while clusterChanged:
         clusterChanged = False
@@ -37,17 +41,28 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
                     minDist = distJI; minIndex = j
             if clusterAssment[i,0] != minIndex: clusterChanged = True
             clusterAssment[i,:] = minIndex,minDist**2
-        print centroids
+        print(centroids)
         for cent in range(k):#recalculate centroids
             ptsInClust = dataSet[nonzero(clusterAssment[:,0].A==cent)[0]]#get all the point in this cluster
-            centroids[cent,:] = mean(ptsInClust, axis=0) #assign centroid to mean 
-    return centroids, clusterAssment
+            print (ptsInClust)
+            centroids[cent,:] = mean(ptsInClust, axis=0) #assign centroid to mean
+    return centroids, clusterAssment,ptsInClust
 
 if __name__== "__main__": 
-	dataMat = mat(loadDataSet('testSet.txt'))
-	myCentroids, clustAssing = kMeans(dataMat,4)
-	#print myCentroids
-	# print dataMat[0],dataMat[1]
-	# print dataMat[0]-dataMat[1]
-	# print sum(dataMat[0]-dataMat[1])
+
+	# dataMat = mat(loadDataSet('testSet.txt'))
+	data_ = [[2.273,68.367],[27.89,83.127],[30.519,61.07],[62.049,69.343],[29.263,68.748],[62.657,90.094],[75.735,62.761],[24.344,43.816],[17.667,86.765],[68.816,76.874],[69.076,57.829],[85.691,88.114]]
+	dataMat = array(data_)
+	print (dataMat)
+
+	myCentroids, clustAssing, clustarr = kMeans(dataMat,2)
+	print(clustarr)
+	# print myCentroids
+	# print (dataMat[0],dataMat[1])
+	# print (dataMat[0]-dataMat[1])
+	# print (sum(dataMat[0]-dataMat[1]))
 	# distEclud(dataMat[0],dataMat[1])
+
+	
+
+
