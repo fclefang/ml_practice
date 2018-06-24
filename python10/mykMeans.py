@@ -53,7 +53,7 @@ if __name__== "__main__":
 	# dataMat = mat(loadDataSet('testSet.txt'))
 	data_ = [[2.273,68.367],[27.89,83.127],[30.519,61.07],[62.049,69.343],[29.263,68.748],[62.657,90.094],[75.735,62.761],[24.344,43.816],[17.667,86.765],[68.816,76.874],[69.076,57.829],[85.691,88.114]]
 	dataMat = array(data_)
-	print (dataMat)
+	# print (dataMat)
 
 	myCentroids, clustAssing, clustarr = kMeans(dataMat,2)
 	print(clustarr)
