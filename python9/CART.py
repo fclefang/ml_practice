@@ -94,9 +94,10 @@ def prune(tree, testData):
     else: return tree
 
 if __name__== "__main__":
- 	myDat = loadDataSet('ex2.txt')
- 	myMat = mat(myDat)
- 	myTree = createTree(myMat,ops=(0,1))
- 	myDatTest = loadDataSet('ex2test.txt')
- 	myMatTest = mat(myDatTest)
- 	print prune(myTree,myMatTest)
+    myDat = loadDataSet('ex2.txt')
+    myMat = mat(myDat)
+    print myDat
+    myTree = createTree(myMat,ops=(0,1))
+    myDatTest = loadDataSet('ex2test.txt')
+    myMatTest = mat(myDatTest)
+    print prune(myTree,myMatTest)
